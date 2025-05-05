@@ -1,9 +1,20 @@
-import example.pepita
+import example.*
+import trabajadores.*
 
-describe "group of tests for pepita" {
-
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
-  }
-
+test "**Laura** puede cuidar al **Dragon**"{
+  assert.that(dragon.puedeSerCuidadoPor_(laura))
 }
+
+test "**Rodrigo** no puede cuidar a la **Gárgola**"{
+  assert.that(not gargola.puedeSerCuidadoPor_(rodrigo))
+}
+
+test "**Rodrigo** puede cuidar a la **Gárgola** si cambia de turno"{
+  gargola.cambiarForma()
+  assert.that(gargola.puedeSerCuidadoPor_(rodrigo))
+}
+
+test "Que **Germán** puede cuidar al **Fénix,** pero no al **Dragon**" {
+  assert.that(fenix.puedeSerCuidadoPor_(german) && not dragon.puedeSerCuidadoPor_(german))
+}
+
